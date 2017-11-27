@@ -17,18 +17,20 @@ public class PersonBus {
 	
 	
 	// return all person
-	public void getAllPersons() {
+	public void getAllPersons() throws SQLException, ClassNotFoundException {
 		PersonDAO personDao = new PersonDAO();
 		personDao.getAllPersons();
 	}
 	
 	/**
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 * @Parameter: No
 	 * @Return: 
 	 * @description: Input information of person
 	 * @modifier:
 	 */
-	public void input() {
+	public void input() throws SQLException, ClassNotFoundException {
 		Scanner sc= new Scanner(System.in);
 		Person person = new Person();
 		
@@ -93,7 +95,7 @@ public class PersonBus {
 	 * @Return: boolean. check person exits to update or insert
 	 * @modifier:
 	 */
-	public boolean isExist(Person person) {
+	public boolean isExist(Person person) throws ClassNotFoundException{
 		Connection con = connection.connectDb();
 		ResultSet rs = null;
 		PreparedStatement ps = null;

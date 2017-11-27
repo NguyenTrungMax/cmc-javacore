@@ -15,11 +15,12 @@ import connection.connection;
  */
 public class PersonDAO {
 	/**
+	 * @throws SQLException 
 	 * @Parameter: No 
 	 * @Return: list of person 
 	 * @modifier:
 	 */
-	public void getAllPersons() {
+	public void getAllPersons() throws SQLException, ClassNotFoundException {
 		Connection con = connection.connectDb();
 		ResultSet rs = null;
 		try {
@@ -35,16 +36,20 @@ public class PersonDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return;
+		} 
+		finally {
+			con.close();
 		}
 	}
 	
 	/**
+	 * @throws SQLException 
 	 * @Parameter: person
 	 * @Return: 
 	 * @description: update data of person
 	 * @modifier:
 	 */
-	public void updatePerson(Person person) {
+	public void updatePerson(Person person) throws SQLException {
 		Connection con = connection.connectDb();
 		PreparedStatement ps = null;
 		
@@ -61,14 +66,18 @@ public class PersonDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			con.close();
+		}
 	}
 	/**
+	 * @throws SQLException 
 	 * @Parameter: person
 	 * @Return: 
 	 * @description: insert data person
 	 * @modifier:
 	 */
-	public void insertPerson(Person person) {
+	public void insertPerson(Person person) throws SQLException {
 		Connection con = connection.connectDb();
 		PreparedStatement ps = null;
 		
@@ -85,6 +94,9 @@ public class PersonDAO {
 				System.err.println("Insert failed");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			con.close();
 		}
 	}
 }

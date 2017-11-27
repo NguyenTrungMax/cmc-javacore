@@ -1,9 +1,11 @@
 package view;
 
+import java.sql.SQLException;
+
 import business.PersonBus;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		PersonBus personBus = new PersonBus();
 		
 		// List of person
