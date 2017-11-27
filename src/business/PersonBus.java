@@ -123,7 +123,7 @@ public class PersonBus {
 	}
 	/**
 	 * @Parameter: str
-	 * @Return: boolean. check validate email
+	 * @Return: boolean. check validate
 	 * @modifier:
 	 */
 	public boolean isValidate(String str) {
