@@ -32,6 +32,7 @@ public class PersonBus {
 		Scanner sc= new Scanner(System.in);
 		Person person = new Person();
 		
+		// check input data validate
 		while (true) {
 			System.out.println("Input account:");
 			String account = sc.nextLine();
@@ -40,6 +41,8 @@ public class PersonBus {
 				break;
 			}
 		}
+		
+		// check input data validate
 		while (true) {
 			System.out.println("Input first name:");
 			String firstName = sc.nextLine();
@@ -49,6 +52,7 @@ public class PersonBus {
 			}
 		}
 		
+		// check input data validate
 		while (true) {
 			System.out.println("Input last name:");
 			String lastName = sc.nextLine();
