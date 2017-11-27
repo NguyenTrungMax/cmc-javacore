@@ -1,14 +1,15 @@
 package view;
 
-import dao.PersonDAO;
+import business.PersonBus;
 
 public class Main {
 	public static void main(String[] args) {
-		PersonDAO person = new PersonDAO();
+		PersonBus personBus = new PersonBus();
 		
 		// List of person
 		System.out.println("List of person:");
-		person.getAllPersons();
-		person.input();
+		personBus.getAllPersons();
+		System.out.println("_________________________________________________________");
+		personBus.input();
 	}
 }

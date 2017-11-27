@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import model.Person;
 import connection.SqlQuery;
@@ -39,22 +38,53 @@ public class PersonDAO {
 		}
 	}
 	
-	public void input() {
-		Scanner sc= new Scanner(System.in);
-		Person person = new Person();
+	/**
+	 * @Parameter: person
+	 * @Return: 
+	 * @description: update data of person
+	 * @modifier:
+	 */
+	public void updatePerson(Person person) {
+		Connection con = connection.connectDb();
+		PreparedStatement ps = null;
 		
-		System.out.println("Input account:");
-		person.setAccount(sc.nextLine());
+		try {
+			ps = con.prepareStatement(SqlQuery.UPDATE);
+			ps.setString(1, person.getFirstName());
+			ps.setString(2, person.getLastName());
+			ps.setString(3, person.getEmail());
+			ps.setString(4, person.getAccount());
+			
+			int i = ps.executeUpdate();
+			if (i > 0) System.out.println("Update succesfully"); else
+				System.err.println("Update failed");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * @Parameter: person
+	 * @Return: 
+	 * @description: insert data person
+	 * @modifier:
+	 */
+	public void insertPerson(Person person) {
+		Connection con = connection.connectDb();
+		PreparedStatement ps = null;
 		
-		System.out.println("Input first name:");
-		person.setFirstName(sc.nextLine());
-		
-		System.out.println("Input last name:");
-		person.setLastName(sc.nextLine());
-		
-		System.out.println("Input name:");
-		person.setEmail(sc.nextLine());
-		sc.close();
-		
+		try {
+			ps = con.prepareStatement(SqlQuery.INSERT);
+			
+			ps.setString(1, person.getAccount());
+			ps.setString(2, person.getFirstName());
+			ps.setString(3, person.getLastName());
+			ps.setString(4, person.getEmail());
+			
+			int i = ps.executeUpdate();
+			if (i > 0) System.out.println("Insert succesfully"); else
+				System.err.println("Insert failed");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

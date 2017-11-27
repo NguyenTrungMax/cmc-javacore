@@ -46,7 +46,7 @@ public class Person {
 	 * @param accouont the accouont to set
 	 */
 	public void setAccount(String account) {
-		account = account;
+		this.account = account;
 	}
 
 	/**
